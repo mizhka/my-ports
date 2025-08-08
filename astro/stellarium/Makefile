@@ -1,14 +1,10 @@
 PORTNAME=	stellarium
-PORTVERSION=	24.4
-PORTREVISION=	2
+PORTVERSION=	25.2
 CATEGORIES=	astro
 MASTER_SITES=	https://github.com/Stellarium/stellarium/releases/download/v${PORTVERSION}/ \
 		https://mirrors.tuna.tsinghua.edu.cn/github-release/Stellarium/stellarium/v${PORTVERSION}/
 DISTFILES=	${DISTNAME}${EXTRACT_SUFX}
 EXTRACT_ONLY=	${_DISTFILES:Nstars_*.cat:N*.pdf}
-
-PATCH_SITES=	https://github.com/Stellarium/stellarium/commit/
-PATCHFILES=	af0421c437ee4ddbf319d6e18fadf5c8a688d5cb.patch:-p1
 
 MAINTAINER=	danfe@FreeBSD.org
 COMMENT=	3D photo-realistic sky renderer (planetarium)
@@ -18,7 +14,8 @@ LICENSE=	GPLv2+
 
 BUILD_DEPENDS=	${LOCALBASE}/include/fast_float/fast_float.h:math/fast_float
 LIB_DEPENDS=	libexiv2.so:graphics/exiv2 \
-		libnlopt.so:math/nlopt@minimal
+		libnlopt.so:math/nlopt@minimal \
+		libmd4c-html.so:textproc/md4c
 
 USES=		cmake compiler:c++11-lang desktop-file-utils \
 		perl5 qt:5 shared-mime-info tar:xz
@@ -95,9 +92,6 @@ DISTFILES+=	stars_4_1v0_2.cat:stars4 stars_5_2v0_1.cat:stars5 \
 post-extract-DOCS-on:
 	@${LN} -sf ${_DISTDIR}/stellarium_user_guide-${PORTVERSION}-1.pdf \
 		${WRKSRC}
-
-post-install:
-	@${RMDIR} ${STAGEDIR}${DATADIR}/skycultures/greek_almagest/almstars
 
 post-install-MORE_STARS-on:
 	${INSTALL_DATA} ${DISTDIR}/stars_4_1v0_2.cat \
