@@ -1,5 +1,5 @@
 PORTNAME=	libbacktrace
-DISTVERSION=	1.0-20221130 # from README: This is version 1.0. It is likely that this will always be version 1.0.
+DISTVERSION=	1.0-20251106 # from README: This is version 1.0. It is likely that this will always be version 1.0.
 PORTREVISION=	1
 CATEGORIES=	devel
 
@@ -15,7 +15,7 @@ USE_LDCONFIG=	yes
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	ianlancetaylor
-GH_TAGNAME=	14818b7
+GH_TAGNAME=	b9e4006
 
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--enable-shared
