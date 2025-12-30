@@ -8,13 +8,31 @@
  dap_adapters.workspace = true
  db.workspace = true
  debug_adapter_extension.workspace = true
-@@ -178,6 +177,9 @@ ashpd.workspace = true
- 
+@@ -79,6 +78,7 @@ http_client.workspace = true
+ edit_prediction.workspace = true
+ edit_prediction_ui.workspace = true
+ http_client.workspace = true
++image.workspace = true
+ image_viewer.workspace = true
+ inspector_ui.workspace = true
+ install_cli.workspace = true
+@@ -179,6 +179,9 @@ ashpd.workspace = true
  [target.'cfg(any(target_os = "linux", target_os = "freebsd"))'.dependencies]
  ashpd.workspace = true
-+
+ 
 +[target.'cfg(not(target_os = "freebsd"))'.dependencies]
 +crashes.workspace = true
- 
++
  [dev-dependencies]
  call = { workspace = true, features = ["test-support"] }
+ dap = { workspace = true, features = ["test-support"] }
+@@ -194,6 +197,9 @@ workspace = { workspace = true, features = ["test-supp
+ tree-sitter-md.workspace = true
+ tree-sitter-rust.workspace = true
+ workspace = { workspace = true, features = ["test-support"] }
++
++[build-dependencies]
++image.workspace = true
+ 
+ [package.metadata.bundle-dev]
+ icon = ["resources/app-icon-dev@2x.png", "resources/app-icon-dev.png"]
